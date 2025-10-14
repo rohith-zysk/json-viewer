@@ -146,6 +146,28 @@ export default function JsonViewer() {
     }
   };
 
+  const handleCopyLeft = async () => {
+    if (!leftParsed) return;
+    try {
+      const formatted = JSON.stringify(leftParsed, null, 2);
+      await navigator.clipboard.writeText(formatted);
+      toast.success("Left JSON copied to clipboard");
+    } catch {
+      toast.error("Failed to copy to clipboard");
+    }
+  };
+
+  const handleCopyRight = async () => {
+    if (!rightParsed) return;
+    try {
+      const formatted = JSON.stringify(rightParsed, null, 2);
+      await navigator.clipboard.writeText(formatted);
+      toast.success("Right JSON copied to clipboard");
+    } catch {
+      toast.error("Failed to copy to clipboard");
+    }
+  };
+
   return (
     <div className={`${activeTab === "compare" ? "max-w-full" : "max-w-4xl"} mx-auto p-6 space-y-4`}>
       <Card>
@@ -195,6 +217,11 @@ export default function JsonViewer() {
                   onChange={(e) => setLeftInput(e.target.value)}
                   className="max-h-[70vh] overflow-auto resize-none"
                 />
+                <div className="flex items-center gap-2">
+                  <Button variant="outline" onClick={handleCopyLeft} disabled={!leftParsed}>
+                    Copy Left JSON
+                  </Button>
+                </div>
                 {leftParsed && (
                   <div className="max-h-[70vh] overflow-auto border rounded-md p-2">
                     <JsonView
@@ -213,6 +240,11 @@ export default function JsonViewer() {
                   onChange={(e) => setRightInput(e.target.value)}
                   className="max-h-[70vh] overflow-auto resize-none"
                 />
+                <div className="flex items-center gap-2">
+                  <Button variant="outline" onClick={handleCopyRight} disabled={!rightParsed}>
+                    Copy Right JSON
+                  </Button>
+                </div>
                 {rightParsed && (
                   <div className="max-h-[70vh] overflow-auto border rounded-md p-2">
                     <JsonView
