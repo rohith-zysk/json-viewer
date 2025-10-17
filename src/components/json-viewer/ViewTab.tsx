@@ -1,7 +1,6 @@
 import React from "react";
 import { JsonInput } from "./JsonInput";
 import { JsonToolbar } from "./JsonToolbar";
-import { JsonDisplay } from "./JsonDisplay";
 import { JSON_VIEWER_CONSTANTS } from "@/utils/constants";
 
 interface ViewTabProps {

@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
 import { JSON_VIEWER_CONSTANTS } from "@/utils/constants";
 import { cn } from "@/lib/utils";
 
