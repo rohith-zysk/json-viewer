@@ -63,12 +63,6 @@ export const useJsonViewer = (): JsonViewerHook => {
     setRightParsed(parsed);
   }, [rightInput]);
 
-  // Clear JSON input and preview when switching tabs
-  useEffect(() => {
-    // Clear the main JSON input and parsed data when switching tabs
-    setJsonInput("");
-    setParsedJson(null);
-  }, [activeTab]);
 
   const handleCopy = async (): Promise<void> => {
     if (!formattedJson) return;
