@@ -128,18 +128,6 @@ export default function JsonViewer() {
           </div>
         </div>
 
-        {/* Results Section - Only show for compare tab */}
-        {activeTab === "compare" && (
-          <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
-            <div className="xl:col-span-3">
-              <JsonDisplay data={parsedJson} />
-            </div>
-            <div className="xl:col-span-1">
-              <JsonStatistics statistics={statistics} />
-            </div>
-          </div>
-        )}
-
         {/* JSON Display and Statistics for view tab - side by side */}
         {activeTab === "view" && parsedJson !== null && (
           <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
