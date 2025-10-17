@@ -260,7 +260,9 @@ const getDepth = (obj: unknown, currentDepth = 0): number => {
   if (keys.length === 0) return currentDepth;
 
   return Math.max(
-    ...keys.map((key) => getDepth((obj as any)[key], currentDepth + 1))
+    ...keys.map((key) =>
+      getDepth((obj as Record<string, unknown>)[key], currentDepth + 1)
+    )
   );
 };
 
@@ -273,7 +275,7 @@ export const fixJsonData = (jsonString: string): string => {
     const parsed = JSON.parse(jsonString);
 
     // Function to recursively transform [object Object] strings
-    const transformObjectStrings = (obj: any): any => {
+    const transformObjectStrings = (obj: unknown): unknown => {
       if (typeof obj === "string") {
         // Check if it's a [object Object] string
         if (obj === "[object Object]") {
@@ -307,7 +309,7 @@ export const fixJsonData = (jsonString: string): string => {
       }
 
       if (obj && typeof obj === "object") {
-        const transformed: any = {};
+        const transformed: Record<string, unknown> = {};
         for (const [key, value] of Object.entries(obj)) {
           transformed[key] = transformObjectStrings(value);
         }

@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import "react-json-view-lite/dist/index.css";
 
 import { useJsonViewer } from "@/hooks/useJsonViewer";
@@ -27,7 +26,6 @@ export default function JsonViewer() {
     leftParsed,
     rightParsed,
     statistics,
-    dataQuality,
     setJsonInput,
     setActiveTab,
     setLeftInput,
@@ -40,7 +38,6 @@ export default function JsonViewer() {
     handleValidate,
     handleExport,
     handleClear,
-    handleFixData,
     handleAutoFix,
     handleQuickFix,
   } = useJsonViewer();
